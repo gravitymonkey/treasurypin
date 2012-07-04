@@ -1,0 +1,139 @@
+		<div id="container">
+			<div id="main">
+				<div id="leftSide">
+					<ul id="nav">
+						<li class="current">
+							<a id="linkhome" href="#home">do it</a>
+						</li>
+						<li>
+							<a id="linkwhat" href="#what">what</a>
+						</li>
+						<li>
+							<a id="linkwhy" href="#why">why</a>
+						</li>
+						<li>
+							<a id="linkwho" href="#who">who</a>
+						</li>
+					</ul>
+				</div>
+				<!-- end #leftside -->
+				<div id="rightSide">					
+
+					<section id="home">	
+					<div style="font-family: 'Montez', cursive; font-size: 96px;">Treasury Pin
+						<IMG SRC="/assets/treasury_box.jpg" width=200>
+					</div>
+					<BR><BR>
+					<span style="font-size: 25px;">
+					Pin your <A HREF="http://www.etsy.com" target="_new">Etsy</A> Treasury onto 
+					<A HREF="http://www.pinterest.com" target="_new">Pinterest</A>
+					<BR><BR>
+					Enter the full URL of your Etsy Treasury:
+					<BR>
+					<form>
+					<input type="text" id="treasury_url" size=42 style="font-size: 22px;" placeholder="http://www.etsy.com/treasury/....">
+					<span id="info" style="width: 35px;"></span>
+					<input id="gobutton" type="button" value="Go!" onclick="javascript:makePin();">
+					</form>
+					</span>
+					<BR>
+					<div id="derp" style="font-family: 'Montez', cursive; font-size: 26px;">we're not affliated with Etsy or Pinterest, btw, tx.</div>
+
+					</section>
+					<section id="what">
+						<h1>wait, whut?</h1>
+						<div class="content">
+						A way to show your <A HREF="http://pinterest.com" target="_new">Pinterest</A> pals 
+						all the fabulous <A HREF="http://www.etsy.com/treasury/" target="_new">Treasuries you've made on Etsy</A>. 
+						And a great way to promote Treasuries that you've been <A HREF="http://www.etsy.com/treasury/search/?search_query=daisieschain&search_submit=&search_type=treasury">featured in</A>.
+						<BR>
+						<img src="/assets/three_treasuries.png">
+						</div>
+					</section>
+					<section id="why">
+						<h1>why?</h1>
+						<div class="content">
+						We all know that Etsy and Pinterest were made for each other. 
+						<BR><BR>
+						It's so easy and so much fun to highlight your favorite Etsy items 
+						on Pinterest. 
+						<BR><BR>
+						But what about that great Treasury you made the other day? 
+						The one that came out so fabulous? 
+						<BR><BR>
+						There wasn't a way to easily show your curatorial talent to the Pinterest community... 
+						<BR><BR>
+						<span style="font-family: 'Montez', cursive; font-size: 26px;">Until now (dum-dum-dummmm)</span>
+
+						</div>
+					</section>
+					<section id="who">
+						<h1>who?</h1>
+						<div class="content"
+						Brought to you as a one-day, one-bite site from:<BR>
+						<a href="http://www.etsy.com/people/heidivuechi">Heidi</A> and her 
+						<a href="http://www.gravitymonkey.com">code monkey</A>.
+						<BR><BR>
+						If you like and use Treasury Pin, please consider pinning a 
+						favorite from 
+						<a href="http://www.etsy.com/shop/DaisiesChain" target="_new">
+						<img src="http://img0-llalt.etsystatic.com/000/0/0/iusb_760x100.8999448.jpg" width=700 border=0>
+						</a>
+						<BR><BR>
+						or, you could easily pin this site: 
+						<a href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Ftreasurypin.com&media=http%3A%2F%2Ftreasurypin.com%2Fassets%2Ftreasury_box.jpg&description=TreasuryPin%3A%20Easily%20Pin%20your%20Etsy%20Treasury%20onto%20Pinterest%20" class="pin-it-button" count-layout="horizontal"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" /></a>
+						<BR><BR>
+						Other monkeys may want the code, source available <A target="_new" HREF="https://github.com/gravitymonkey/treasurypin">https://github.com/gravitymonkey/treasurypin</a>
+						</div>
+					</section>
+
+				</div>
+
+				<!-- end #rightside -->
+			</div>
+			<!-- end #main -->
+		</div>
+		<div id="nav_overlay" style="position:absolute; top: 70px;left: 50px; width: 130px; height:200px;">
+		<div onclick="$('#linkhome').click();" style="position: relative; top: 0px; left: 0px; width: 130px; height: 50px;"></div>
+		<div onclick="$('#linkwhat').click();" style="position: relative; top: 0px; left: 0px; width: 130px; height: 45px;"></div>
+		<div onclick="$('#linkwhy').click();" style="position: relative; top: 0px; left: 0px; width: 130px; height: 45px;"></div>
+		<div onclick="$('#linkwho').click();" style="position: relative; top: 0px; left: 0px; width: 130px; height: 55px;"></div>
+		</div>
+		<!-- end #container -->
+		<script>
+			var sideTop;
+			// Activate one page nav
+			$('#nav').onePageNav({
+				currentClass : 'current',
+				changeHash : true,
+				scrollSpeed : 750,
+				scrollOffset : 30,
+    				begin: function() {
+			        	//I get fired when the animation is starting
+    				},
+    				end: function() {
+					var y = window.pageYOffset;
+					$("#nav_overlay").css("top", (y + 70) + "px");
+    				}
+			});
+
+
+			// Load images as they come into view
+			$('img').lazyload({
+				effect : "fadeIn",
+			});
+
+
+			// Make any links to external sources open in a new window
+			$(document).ready(function() {
+				$("a[href^=http]").each(function() {
+					if(this.href.indexOf(location.hostname) == -1) {
+						$(this).attr({
+							target : "_blank",
+							title : "Opens in a new window"
+						});
+					}
+				})
+			});
+
+		</script>
